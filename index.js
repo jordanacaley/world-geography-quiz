@@ -7,11 +7,10 @@ axios
   .get(easyURL)
   .then((serverResponse) => {
     console.log(serverResponse.data.results);
-    const results = serverResponse.data.results[0]; // to do: don't repeat a question already asked
+    const results = serverResponse.data.results[0]; // to do: randomize index & once question has been asked, remove it from the array
     const newQuestion = results.question; 
     const correctAnswer = results.correct_answer;
     const incorrectAnswers = results.incorrect_answers;
-    console.log(newQuestion);
     console.log(correctAnswer);
     console.log(incorrectAnswers);
     displayQuestion(newQuestion);
@@ -40,15 +39,25 @@ function shuffleArray(arr) {
   return arr;
 }
 
+const optionsCards = document.querySelectorAll('.option');  
+
 function displayOptions(correctAnswer, incorrectAnswers) {
   let optionsArray = [];
   optionsArray.push(correctAnswer);
   optionsArray.push(incorrectAnswers);
   optionsArray = shuffleArray(optionsArray.flat()); // puts all 4 options into array and shuffles order
-  console.log(optionsArray);
 
-  let optionsCards = document.querySelectorAll('.option');  
   for (let i = 0; i < optionsCards.length; i++) {
     optionsCards[i].innerHTML = `<p>${optionsArray[i]}</p>`
   }
 }
+
+optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
+
+function checkAnswer(evt) {
+  const choice = evt.target.textContent;
+  console.log(choice);
+  return choice;
+}
+
+// need to figure out how to compare this to correct answer
