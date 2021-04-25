@@ -7,7 +7,17 @@ axios
   .get(easyURL)
   .then((serverResponse) => {
     console.log(serverResponse.data.results);
-    const results = serverResponse.data.results[0]; // to do: randomize index & once question has been asked, remove it from the array
+
+    // Create an array with numbers 0 - 49
+    let questionNumberArray = [];
+    for (let i = 0; i < 50; i++) {
+      questionNumberArray.push(i);
+    }
+
+    // Randomly select a number for the array, which will be the question asked
+    let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
+
+    const results = serverResponse.data.results[randomQuestion]; // to do: once question has been asked, remove it from the array
     const newQuestion = results.question; 
     const correctAnswer = results.correct_answer;
     const incorrectAnswers = results.incorrect_answers;
