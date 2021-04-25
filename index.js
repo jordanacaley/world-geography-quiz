@@ -10,29 +10,38 @@ for (let i = 0; i < 50; i++) {
   questionNumberArray.push(i);
 }
 
-// Randomly select a number from the questionNumberArray, which will be the question asked
-let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
-console.log(randomQuestion);
-
-// Remove that question from the array so it can't be asked again
-for (let i = 0; i < questionNumberArray.length; i++) {
-  if (questionNumberArray[i] === randomQuestion) {
-    questionNumberArray.splice(i, 1);
-  }
-}
-console.log(questionNumberArray);
-
+// Initialize correct and incorrect answers
 let correctAnswer = '';
 let incorrectAnswers = [];
 
-const results = easyQuestions[randomQuestion];
-const newQuestion = results.question; 
-correctAnswer = results.correct_answer;
-incorrectAnswers = results.incorrect_answers;
-console.log(correctAnswer);
-console.log(incorrectAnswers);
-displayQuestion(newQuestion);
-displayOptions(correctAnswer, incorrectAnswers)
+// Start the game
+window.onload = (event) => {  
+  nextQuestion();
+};
+
+function nextQuestion() {
+  // Randomly select a number from the questionNumberArray, which will be the question asked
+  let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
+  console.log(randomQuestion);
+
+  // Remove that question from the array so it can't be asked again
+  for (let i = 0; i < questionNumberArray.length; i++) {
+    if (questionNumberArray[i] === randomQuestion) {
+      questionNumberArray.splice(i, 1);
+    }
+  }
+  console.log(questionNumberArray);
+
+  const results = easyQuestions[randomQuestion];
+  const newQuestion = results.question; 
+  correctAnswer = results.correct_answer;
+  incorrectAnswers = results.incorrect_answers;
+  console.log(correctAnswer);
+  console.log(incorrectAnswers);
+  displayQuestion(newQuestion);
+  displayOptions(correctAnswer, incorrectAnswers)
+}
+
 
 function displayQuestion(newQuestion) {
   document.querySelector(".question").textContent = newQuestion;
@@ -81,10 +90,19 @@ function checkAnswer(evt) {
     console.log("Eres un crack de la geografía!")
     counterCorrect += 1;
     scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
+    if (counterCorrect === 10) {
+      console.log("You beat the game!");
+    } else {
+      nextQuestion();
+    }
   } else {
     console.log("Womp womp... wrong.");
     counterIncorrect += 1;
     scoreboardIncorrect.textContent = `Incorrect: ${counterIncorrect}`;
+    if (counterIncorrect === 3) {
+      console.log("Game over for you!");
+    } else {
+      nextQuestion();
+    }
   }
-  // figure out how to display next question
 }
