@@ -6,30 +6,19 @@ const easyQuestions = JSON.parse(JSON.stringify(source));
 const mediumQuestions = JSON.parse(JSON.stringify(source2));
 const hardQuestions = JSON.parse(JSON.stringify(source3));
 
-console.log(easyQuestions);
-console.log(mediumQuestions);
-console.log(hardQuestions);
-
 // Create an array with numbers 0 - 49 for each question
 let questionNumberArray = [];
 for (let i = 0; i < 50; i++) {
   questionNumberArray.push(i);
 }
 
-// Initialize correct and incorrect answers
+// Initialize variables
 let correctAnswer = '';
 let incorrectAnswers = [];
 let difficulty = '';
 
 const difficultyBtns = document.querySelectorAll('.level');
-// difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
-
-
-// Start the game
-// window.onload = (event) => {  
-//   nextQuestion();
-// };
 
 function setLevel(evt) {
   const level = evt.target.id;
