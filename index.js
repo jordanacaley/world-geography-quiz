@@ -2,6 +2,7 @@ const easyURL = "https://opentdb.com/api.php?amount=50&category=22&difficulty=ea
 const mediumURL = "https://opentdb.com/api.php?amount=50&category=22&difficulty=medium&type=multiple";
 const difficultURL = "https://opentdb.com/api.php?amount=50&category=22&difficulty=hard&type=multiple ";
 
+let correctAnswer = '';
   
 axios
   .get(easyURL)
@@ -22,7 +23,7 @@ axios
 
     // Remove that question from the array so it can't be asked again
     for (let i = 0; i < questionNumberArray.length; i++) {
-      if (questionNumberArray[i] == randomQuestion) {
+      if (questionNumberArray[i] === randomQuestion) {
         questionNumberArray.splice(i, 1);
       }
     }
@@ -30,7 +31,7 @@ axios
 
     const results = serverResponse.data.results[randomQuestion];
     const newQuestion = results.question; 
-    const correctAnswer = results.correct_answer;
+    correctAnswer = results.correct_answer;
     const incorrectAnswers = results.incorrect_answers;
     console.log(correctAnswer);
     console.log(incorrectAnswers);
@@ -45,7 +46,7 @@ function displayQuestion(newQuestion) {
   document.querySelector(".question").textContent = newQuestion;
 }
 
-// Fisher-Yates shuffle
+// Fisher-Yates shuffle to mix up order of correct and incorrect answers
 function shuffleArray(arr) {
   let counter = arr.length;
   while (counter > 0) {
@@ -77,8 +78,5 @@ optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
 
 function checkAnswer(evt) {
   const choice = evt.target.textContent;
-  console.log(choice);
-  return choice;
+  console.log(choice === correctAnswer); // compare user's choice to correct answer
 }
-
-// need to figure out how to compare this to correct answer
