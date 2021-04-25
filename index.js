@@ -2,22 +2,21 @@ const easyURL = "https://opentdb.com/api.php?amount=50&category=22&difficulty=ea
 const mediumURL = "https://opentdb.com/api.php?amount=50&category=22&difficulty=medium&type=multiple";
 const difficultURL = "https://opentdb.com/api.php?amount=50&category=22&difficulty=hard&type=multiple ";
 
+// Create an array with numbers 0 - 49 for each question
+let questionNumberArray = [];
+for (let i = 0; i < 50; i++) {
+  questionNumberArray.push(i);
+}
+
 let correctAnswer = '';
+let incorrectAnswers = [];
   
 axios
   .get(easyURL)
   .then((serverResponse) => {
     console.log(serverResponse.data.results);
 
-    // Create an array with numbers 0 - 49
-    let questionNumberArray = [];
-    for (let i = 0; i < 50; i++) {
-      questionNumberArray.push(i);
-    }
-
-    console.log(questionNumberArray);
-
-    // Randomly select a number for the array, which will be the question asked
+    // Randomly select a number from the questionNumberArray, which will be the question asked
     let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
     console.log(randomQuestion);
 
@@ -32,7 +31,7 @@ axios
     const results = serverResponse.data.results[randomQuestion];
     const newQuestion = results.question; 
     correctAnswer = results.correct_answer;
-    const incorrectAnswers = results.incorrect_answers;
+    incorrectAnswers = results.incorrect_answers;
     console.log(correctAnswer);
     console.log(incorrectAnswers);
     displayQuestion(newQuestion);
@@ -79,4 +78,10 @@ optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
 function checkAnswer(evt) {
   const choice = evt.target.textContent;
   console.log(choice === correctAnswer); // compare user's choice to correct answer
+  if (choice === correctAnswer) {
+    console.log("Eres un crack de la geografía!")
+  } else {
+    console.log("Womp womp... wrong.")
+  }
+  // figure out how to display next question
 }
