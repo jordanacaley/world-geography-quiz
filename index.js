@@ -14,10 +14,21 @@ axios
       questionNumberArray.push(i);
     }
 
+    console.log(questionNumberArray);
+
     // Randomly select a number for the array, which will be the question asked
     let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
+    console.log(randomQuestion);
 
-    const results = serverResponse.data.results[randomQuestion]; // to do: once question has been asked, remove it from the array
+    // Remove that question from the array so it can't be asked again
+    for (let i = 0; i < questionNumberArray.length; i++) {
+      if (questionNumberArray[i] == randomQuestion) {
+        questionNumberArray.splice(i, 1);
+      }
+    }
+    console.log(questionNumberArray);
+
+    const results = serverResponse.data.results[randomQuestion];
     const newQuestion = results.question; 
     const correctAnswer = results.correct_answer;
     const incorrectAnswers = results.incorrect_answers;
