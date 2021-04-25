@@ -1,8 +1,14 @@
 import { easyQuestions as source } from "./data/easy.js";
+import { mediumQuestions as source2 } from "./data/medium.js";
+import { hardQuestions as source3 } from "./data/hard.js";
 
 const easyQuestions = JSON.parse(JSON.stringify(source));
+const mediumQuestions = JSON.parse(JSON.stringify(source2));
+const hardQuestions = JSON.parse(JSON.stringify(source3));
 
 console.log(easyQuestions);
+console.log(mediumQuestions);
+console.log(hardQuestions);
 
 // Create an array with numbers 0 - 49 for each question
 let questionNumberArray = [];
