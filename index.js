@@ -10,10 +10,6 @@ for (let i = 0; i < 50; i++) {
   questionNumberArray.push(i);
 }
 
-let correctAnswer = '';
-let incorrectAnswers = [];
-  
-
 // Randomly select a number from the questionNumberArray, which will be the question asked
 let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
 console.log(randomQuestion);
@@ -25,6 +21,9 @@ for (let i = 0; i < questionNumberArray.length; i++) {
   }
 }
 console.log(questionNumberArray);
+
+let correctAnswer = '';
+let incorrectAnswers = [];
 
 const results = easyQuestions[randomQuestion];
 const newQuestion = results.question; 
@@ -70,13 +69,22 @@ function displayOptions(correctAnswer, incorrectAnswers) {
 
 optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
 
+const scoreboardCorrect = document.getElementById('correct');
+const scoreboardIncorrect = document.getElementById('incorrect');
+let counterCorrect = 0;
+let counterIncorrect = 0;
+
 function checkAnswer(evt) {
   const choice = evt.target.textContent;
   console.log(choice === correctAnswer); // compare user's choice to correct answer
   if (choice === correctAnswer) {
     console.log("Eres un crack de la geografía!")
+    counterCorrect += 1;
+    scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
   } else {
-    console.log("Womp womp... wrong.")
+    console.log("Womp womp... wrong.");
+    counterIncorrect += 1;
+    scoreboardIncorrect.textContent = `Incorrect: ${counterIncorrect}`;
   }
   // figure out how to display next question
 }
