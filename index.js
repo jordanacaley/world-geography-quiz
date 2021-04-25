@@ -19,13 +19,35 @@ for (let i = 0; i < 50; i++) {
 // Initialize correct and incorrect answers
 let correctAnswer = '';
 let incorrectAnswers = [];
+let difficulty = '';
+
+const difficultyBtns = document.querySelectorAll('.level');
+// difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
+difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
+
 
 // Start the game
-window.onload = (event) => {  
-  nextQuestion();
-};
+// window.onload = (event) => {  
+//   nextQuestion();
+// };
 
-function nextQuestion() {
+function setLevel(evt) {
+  const level = evt.target.id;
+  console.log(level);
+  if (level === 'easy') {
+    nextQuestion(easyQuestions);
+    difficulty = easyQuestions;
+  } else if (level === 'medium') {
+    nextQuestion(mediumQuestions);
+    difficulty = mediumQuestions;
+  } else {
+    nextQuestion(hardQuestions);
+    difficulty = hardQuestions;
+  }
+}
+
+function nextQuestion(setLevel) {
+    
   // Randomly select a number from the questionNumberArray, which will be the question asked
   let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
   console.log(randomQuestion);
@@ -38,7 +60,7 @@ function nextQuestion() {
   }
   console.log(questionNumberArray);
 
-  const results = easyQuestions[randomQuestion];
+  let results = setLevel[randomQuestion];
   const newQuestion = results.question; 
   correctAnswer = results.correct_answer;
   incorrectAnswers = results.incorrect_answers;
@@ -93,13 +115,13 @@ function checkAnswer(evt) {
   const choice = evt.target.textContent;
   console.log(choice === correctAnswer); // compare user's choice to correct answer
   if (choice === correctAnswer) {
-    console.log("Eres un crack de la geografía!")
+    console.log("Eres un(a) crack de la geografía!")
     counterCorrect += 1;
     scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
     if (counterCorrect === 10) {
       console.log("You beat the game!");
     } else {
-      nextQuestion();
+      nextQuestion(difficulty);
     }
   } else {
     console.log("Womp womp... wrong.");
@@ -108,7 +130,7 @@ function checkAnswer(evt) {
     if (counterIncorrect === 3) {
       console.log("Game over for you!");
     } else {
-      nextQuestion();
+      nextQuestion(difficulty);
     }
   }
 }
