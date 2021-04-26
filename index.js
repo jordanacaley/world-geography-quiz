@@ -1,55 +1,13 @@
 import { easyQuestions as source } from "./data/easy.js";
 import { mediumQuestions as source2 } from "./data/medium.js";
 import { hardQuestions as source3 } from "./data/hard.js";
+import { Chronometer } from "./chrono.js";
 
-//Testing out the chrono stuff//
-class Chronometer {
-  constructor() {
-    this.currentTime = 0;
-    this.intervalId = 0;
-  }
+const easyQuestions = JSON.parse(JSON.stringify(source));
+const mediumQuestions = JSON.parse(JSON.stringify(source2));
+const hardQuestions = JSON.parse(JSON.stringify(source3));
 
-  startClick(callback) {
-    this.intervalId = setInterval(() => {
-      this.currentTime++;
-      if (callback) {
-        callback();
-      }
-    }, 1000);
-  }
-
-  getMinutes() {
-    return Math.floor(this.currentTime / 60);
-  }
-
-  getSeconds() {
-    return this.currentTime % 60;
-  }
-
-  twoDigitsNumber(num) {
-    if (num < 10) {
-      num = "0" + num;
-    } 
-    return num;
-  }
-
-  stopClick() {
-    clearInterval(this.intervalId);
-  }
-  
-  resetClick() {
-    this.currentTime = 0;
-  }
-
-  splitClick(minutes, seconds) {
-    minutes = this.getMinutes();
-    seconds = this.getSeconds();
-    return `${this.twoDigitsNumber(minutes)}:${this.twoDigitsNumber(seconds)}`;
-  }
-}
-
-// New File
-
+// Chrono
 const chronometer = new Chronometer();
 
 // get the DOM elements that will serve us to display the time:
@@ -77,12 +35,6 @@ function printSeconds() {
 function printSplit(difficulty) {
   splits.innerHTML += `<li>${difficulty[0].difficulty.toUpperCase()}: ${chronometer.splitClick()}</li>`
 }
-
-//Testing out the chrono stuff END//
-
-const easyQuestions = JSON.parse(JSON.stringify(source));
-const mediumQuestions = JSON.parse(JSON.stringify(source2));
-const hardQuestions = JSON.parse(JSON.stringify(source3));
 
 // Create an array with numbers 0 - 49 for each question
 let questionNumberArray = [];
