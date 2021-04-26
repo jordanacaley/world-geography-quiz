@@ -163,7 +163,7 @@ function checkAnswer(evt) {
   if (choice === correctAnswer) {
     console.log("Eres un(a) crack de la geografía!")
     counterCorrect += 1;
-    scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
+    scoreboardCorrect.textContent = `${counterCorrect}`;
     if (counterCorrect === 10) {
       console.log("You beat the game!");
       playAgainBtn.classList.toggle("hidden");
@@ -175,7 +175,7 @@ function checkAnswer(evt) {
   } else {
     console.log("Womp womp... wrong.");
     counterIncorrect += 1;
-    scoreboardIncorrect.textContent = `Incorrect: ${counterIncorrect}`;
+    scoreboardIncorrect.textContent = `${counterIncorrect}`;
     if (counterIncorrect === 3) {
       console.log("Game over for you!");
       playAgainBtn.classList.toggle("hidden");
