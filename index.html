@@ -37,15 +37,29 @@
     <div id="set-level">
       <p class="lead">Pick your difficulty level:</p>
       <button id="easy" type="button" class="btn btn-success btn-lg level">Average American</button>
-      <button id="medium" type="button" class="btn btn-warning btn-lg level">I'm pretty good</button>
+      <button id="medium" type="button" class="btn btn-warning btn-lg level">Not too bad</button>
       <button id="hard" type="button" class="btn btn-danger btn-lg level">Crack de la geografía</button>
     </div>  
     <h3 id="display-level" class="hidden"></h3>
-    <div id="scoreboard" class="hidden">
+    <!-- <div id="scoreboard" class="hidden">
       <div>Your score:</div>
       <div id="correct">Correct: 0</div>
       <div id="incorrect">Incorrect: 0</div>
-    </div>
+    </div> -->
+    <div id="scoreboard" class="hidden">
+      <div class="card text-white bg-success mb-3" style="max-width: 7rem;">
+        <div id="correct" class="card-header">Correct</div>
+        <div class="card-body">
+          <h4 class="card-title">0</h4>
+        </div>
+      </div>
+      <div class="card text-white bg-danger mb-3" style="max-width: 7rem;">
+        <div id="incorrect" class="card-header">Incorrect</div>
+        <div class="card-body">
+          <h4 class="card-title">0</h4>
+        </div>
+      </div>
+   </div>
   </div>  
   
   <div id="qa-display">

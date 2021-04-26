@@ -33,7 +33,7 @@ function printSeconds() {
 }
 
 function printSplit(difficulty) {
-  splits.innerHTML += `<li>${difficulty[0].difficulty.toUpperCase()}: ${chronometer.splitClick()}</li>`
+  splits.innerHTML += `<li>${difficulty[0].difficulty.charAt(0).toUpperCase() + difficulty[0].difficulty.slice(1)}: ${chronometer.splitClick()}</li>`
 }
 
 // Create an array with numbers 0 - 49 for each question
@@ -86,7 +86,7 @@ function setLevel(evt) {
   setLevelDiv.classList.toggle("hidden");
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
-  displayLevel.textContent = `Difficulty: ${level.toUpperCase()}`;
+  displayLevel.textContent = `Difficulty: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
   chronometer.startClick(printTime);
 }
 
