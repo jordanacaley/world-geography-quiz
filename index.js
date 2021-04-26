@@ -116,6 +116,8 @@ const difficultyBtns = document.querySelectorAll('.level');
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
 function newGame() {
+  chronometer.resetClick();
+  printTime();
   setLevelDiv.classList.toggle("hidden");
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
@@ -239,7 +241,6 @@ function checkAnswer(evt) {
       console.log("Game over for you!");
       playAgainBtn.classList.toggle("hidden");
       chronometer.stopClick()
-      printSplit();
     } else {
       nextQuestion(difficulty);
     }
@@ -247,4 +248,3 @@ function checkAnswer(evt) {
 }
 
 playAgainBtn.onclick = newGame;
-// to add: when you click play again, need to also reset timer
