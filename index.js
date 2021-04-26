@@ -18,6 +18,7 @@ let incorrectAnswers = [];
 let difficulty = '';
 let setLevelDiv = document.getElementById('set-level');
 let displayLevel = document.getElementById('display-level');
+let scoreboard = document.getElementById('scoreboard');
 
 const difficultyBtns = document.querySelectorAll('.level');
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
@@ -37,6 +38,7 @@ function setLevel(evt) {
   }
   setLevelDiv.classList.toggle("hidden");
   displayLevel.classList.toggle("hidden");
+  scoreboard.classList.toggle("hidden");
   displayLevel.textContent = `Difficulty: ${level.toUpperCase()}`;
 }
 
