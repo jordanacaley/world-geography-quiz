@@ -2,6 +2,97 @@ import { easyQuestions as source } from "./data/easy.js";
 import { mediumQuestions as source2 } from "./data/medium.js";
 import { hardQuestions as source3 } from "./data/hard.js";
 
+//Testing out the chrono stuff//
+class Chronometer {
+  constructor() {
+    this.currentTime = 0;
+    this.intervalId = 0;
+  }
+
+  startClick(callback) {
+    this.intervalId = setInterval(() => {
+      this.currentTime++;
+      if (callback) {
+        callback();
+      }
+    }, 1000);
+  }
+
+  getMinutes() {
+    return Math.floor(this.currentTime / 60);
+  }
+
+  getSeconds() {
+    return this.currentTime % 60;
+  }
+
+  twoDigitsNumber(num) {
+    if (num < 10) {
+      num = "0" + num;
+    } 
+    return num;
+  }
+
+  stopClick() {
+    clearInterval(this.intervalId);
+  }
+  
+  resetClick() {
+    this.currentTime = 0;
+  }
+
+  splitClick(minutes, seconds) {
+    minutes = this.getMinutes();
+    seconds = this.getSeconds();
+    return `${this.twoDigitsNumber(minutes)}:${this.twoDigitsNumber(seconds)}`;
+  }
+}
+
+// New File
+
+const chronometer = new Chronometer();
+
+// get the DOM elements that will serve us to display the time:
+let minDec = document.getElementById('minDec');
+let minUni = document.getElementById('minUni');
+let secDec = document.getElementById('secDec');
+let secUni = document.getElementById('secUni');
+let milDec = document.getElementById('milDec');
+let milUni = document.getElementById('milUni');
+let splits = document.getElementById('splits');
+
+function printTime() {
+  printMinutes();
+  printSeconds();
+}
+
+function printMinutes() {
+  minUni.textContent = "";
+  minDec.textContent = chronometer.twoDigitsNumber(chronometer.getMinutes()); 
+}
+
+function printSeconds() {
+  secUni.textContent = "";
+  secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds()); 
+}
+
+// ==> BONUS
+function printMilliseconds() {
+  // ... your code goes here
+}
+
+function printSplit() {
+  splits.innerHTML += `<li>${chronometer.splitClick()}</li>`
+}
+
+function clearSplits() {
+  splits.innerHTML = '';
+  chronometer.stopClick();
+  chronometer.resetClick();
+  printTime();
+}
+//Testing out the chrono stuff END//
+
 const easyQuestions = JSON.parse(JSON.stringify(source));
 const mediumQuestions = JSON.parse(JSON.stringify(source2));
 const hardQuestions = JSON.parse(JSON.stringify(source3));
@@ -20,8 +111,8 @@ const setLevelDiv = document.getElementById('set-level');
 const displayLevel = document.getElementById('display-level');
 const scoreboard = document.getElementById('scoreboard');
 const qaDisplay = document.getElementById("qa-display");
-
 const difficultyBtns = document.querySelectorAll('.level');
+
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
 function newGame() {
@@ -55,6 +146,7 @@ function setLevel(evt) {
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
   displayLevel.textContent = `Difficulty: ${level.toUpperCase()}`;
+  chronometer.startClick(printTime);
 }
 
 function nextQuestion(setLevel) {    
@@ -134,6 +226,8 @@ function checkAnswer(evt) {
     if (counterCorrect === 10) {
       console.log("You beat the game!");
       playAgainBtn.classList.toggle("hidden");
+      chronometer.stopClick()
+      printSplit();
     } else {
       nextQuestion(difficulty);
     }
@@ -144,18 +238,13 @@ function checkAnswer(evt) {
     if (counterIncorrect === 3) {
       console.log("Game over for you!");
       playAgainBtn.classList.toggle("hidden");
+      chronometer.stopClick()
+      printSplit();
     } else {
       nextQuestion(difficulty);
     }
   }
 }
 
-
-
-
-
-// function refreshPage(){
-//   window.location.reload();
-// } 
-
 playAgainBtn.onclick = newGame;
+// to add: when you click play again, need to also reset timer

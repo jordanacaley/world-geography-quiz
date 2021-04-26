@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Geography Quiz</title>
+  <script type="module" src="./chrono.js"></script>
   <script type="module" src="./index.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -30,6 +31,21 @@
     <div class="option"></div>
   </div>
   <button id="play-again" class="hidden">Play again</button>
+
+  <section id="clock">
+    <h3>Current game:</h3>
+    <div id="sphere">
+      <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span><span>:</span
+      ><span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
+
+      <div id="milliseconds"><span id="milDec">0</span><span id="milUni">0</span></div>
+    </div>
+  </section>
+
+  <section id="splits-container">
+    <h3>Times to beat:</h3>
+    <ol id="splits"></ol>
+  </section>
   
 </body>
 </html>
