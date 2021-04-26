@@ -145,7 +145,7 @@ function displayOptions(correctAnswer, incorrectAnswers) {
 
   const optionsCards = document.querySelectorAll('.option');  
   for (let i = 0; i < optionsCards.length; i++) {
-    optionsCards[i].innerHTML = `<p>${optionsArray[i]}</p>`
+    optionsCards[i].textContent = `${optionsArray[i]}`
   }
 }
 
