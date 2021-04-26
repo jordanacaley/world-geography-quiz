@@ -88,8 +88,12 @@ function setLevel(evt) {
   setLevelDiv.classList.toggle("hidden");
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
-  earthAnimation.classList.toggle("hidden");
-  timingDiv.classList.toggle("hidden");
+  if (!earthAnimation.classList.contains("hidden")) {
+    earthAnimation.classList.toggle("hidden");
+  }
+  if (timingDiv.classList.contains("hidden")) {
+    timingDiv.classList.toggle("hidden");
+  }
   displayLevel.textContent = `Difficulty: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
   chronometer.startClick(printTime);
 }
@@ -192,6 +196,13 @@ function checkAnswer(evt) {
 
 playAgainBtn.onclick = newGame;
 
+const reloadBtn = document.getElementById("reload")
+
+function refreshPage(){
+  window.location.reload();
+} 
+
+reloadBtn.onclick = refreshPage;
 
 
 // //play audio with out html audio tag
