@@ -30,46 +30,55 @@
     </div>
   </nav>
   
-  <div class="jumbotron">
-    <h1>World geography quiz</h1>
-    <p class="lead">Get 10 questions right to win. Game over if you get 3 wrong!</p>
+  <div class="jumbotron p-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h1>World geography quiz</h1>
+        <p class="lead">Get 10 questions right to win. Game over if you get 3 wrong!</p>
+      </div>    
+      <div>
+        <h2 id="display-level" class="hidden"></h2>
+        <div id="scoreboard" class="hidden">
+          <div class="d-flex">
+            <div class="card text-white bg-success mr-2" style="max-width: 7rem;">
+              <div class="card-header">Correct</div>
+              <div class="card-body">
+                <h4 id="correct" class="card-title">0</h4>
+              </div>
+            </div>
+            <div class="card text-white bg-danger" style="max-width: 7rem;">
+              <div class="card-header">Incorrect</div>
+              <div class="card-body">
+                <h4 id="incorrect"  class="card-title">0</h4>
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+    
     <hr class="my-4">
     <div id="set-level">
       <p class="lead">Pick your difficulty level:</p>
       <button id="easy" type="button" class="btn btn-success btn-lg mb-1 level">Average American</button>
       <button id="medium" type="button" class="btn btn-warning btn-lg mb-1 level">Not too bad</button>
       <button id="hard" type="button" class="btn btn-danger btn-lg level">Crack de la geografía</button>
-    </div>  
-    <h2 id="display-level" class="hidden"></h2>
-    <div id="scoreboard" class="hidden">
-      <div class="d-flex">
-        <div class="card text-white bg-success mr-2" style="max-width: 7rem;">
-          <div class="card-header">Correct</div>
-          <div class="card-body">
-            <h4 id="correct" class="card-title">0</h4>
-          </div>
+    </div>
+    <div id="qa-display">
+      <div class="card text-white bg-primary mb-3" style="max-width: 50rem;">
+        <div class="card-body">
+          <h4 class="question card-title"></h4>
+          <button type="button" class="option btn btn-success m-1"></button>
+          <button type="button" class="option btn btn-success m-1"></button>
+          <button type="button" class="option btn btn-success m-1"></button>
+          <button type="button" class="option btn btn-success m-1"></button>
         </div>
-        <div class="card text-white bg-danger" style="max-width: 7rem;">
-          <div class="card-header">Incorrect</div>
-          <div class="card-body">
-            <h4 id="incorrect"  class="card-title">0</h4>
-          </div>
-        </div>
-      </div>
-   </div>
-  </div>
-  
-  <div id="qa-display">
-    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-      <div class="card-body">
-        <h4 class="question card-title"></h4>
-        <button type="button" class="option btn btn-success m-1"></button>
-        <button type="button" class="option btn btn-success m-1"></button>
-        <button type="button" class="option btn btn-success m-1"></button>
-        <button type="button" class="option btn btn-success m-1"></button>
       </div>
     </div>
+    
   </div>
+  
+  
   
   
   <!-- <div id="qa-display">
@@ -93,7 +102,8 @@
     <h3>Times to beat:</h3>
     <ul id="splits"></ul>
   </section>
-  
+
   <!-- <div id="earth"></div> -->
+  
 </body>
 </html>
