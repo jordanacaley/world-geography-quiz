@@ -63,9 +63,9 @@ function newGame() {
   playAgainBtn.classList.toggle("hidden");
   qaDisplay.classList.toggle("hidden");
   counterCorrect = 0;
-  scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
+  scoreboardCorrect.textContent = `${counterCorrect}`;
   counterIncorrect = 0;
-  scoreboardIncorrect.textContent = `Incorrect: ${counterIncorrect}`;
+  scoreboardIncorrect.textContent = `${counterIncorrect}`;
   setLevel;
   checkAnswer;
 }
