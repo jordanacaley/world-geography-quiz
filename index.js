@@ -16,12 +16,27 @@ for (let i = 0; i < 50; i++) {
 let correctAnswer = '';
 let incorrectAnswers = [];
 let difficulty = '';
-let setLevelDiv = document.getElementById('set-level');
-let displayLevel = document.getElementById('display-level');
-let scoreboard = document.getElementById('scoreboard');
+const setLevelDiv = document.getElementById('set-level');
+const displayLevel = document.getElementById('display-level');
+const scoreboard = document.getElementById('scoreboard');
+const qaDisplay = document.getElementById("qa-display");
 
 const difficultyBtns = document.querySelectorAll('.level');
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
+
+function newGame() {
+  setLevelDiv.classList.toggle("hidden");
+  displayLevel.classList.toggle("hidden");
+  scoreboard.classList.toggle("hidden");
+  playAgainBtn.classList.toggle("hidden");
+  qaDisplay.classList.toggle("hidden");
+  counterCorrect = 0;
+  scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
+  counterIncorrect = 0;
+  scoreboardIncorrect.textContent = `Incorrect: ${counterIncorrect}`;
+  setLevel;
+  checkAnswer;
+}
 
 function setLevel(evt) {
   const level = evt.target.id;
@@ -61,6 +76,9 @@ function nextQuestion(setLevel) {
   incorrectAnswers = results.incorrect_answers;
   console.log(correctAnswer);
   console.log(incorrectAnswers);
+  if (qaDisplay.classList.contains("hidden")) {
+    qaDisplay.classList.toggle("hidden");
+  }
   displayQuestion(newQuestion);
   displayOptions(correctAnswer, incorrectAnswers)
 }
@@ -132,8 +150,12 @@ function checkAnswer(evt) {
   }
 }
 
-function refreshPage(){
-  window.location.reload();
-} 
 
-playAgainBtn.onclick = refreshPage;
+
+
+
+// function refreshPage(){
+//   window.location.reload();
+// } 
+
+playAgainBtn.onclick = newGame;
