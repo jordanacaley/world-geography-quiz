@@ -52,6 +52,7 @@ const scoreboard = document.getElementById('scoreboard');
 const qaDisplay = document.getElementById("qa-display");
 const difficultyBtns = document.querySelectorAll('.level');
 const earthAnimation = document.getElementById("earth");
+const timingDiv = document.getElementById("timing-div");
 
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
@@ -88,6 +89,7 @@ function setLevel(evt) {
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
   earthAnimation.classList.toggle("hidden");
+  timingDiv.classList.toggle("hidden");
   displayLevel.textContent = `Difficulty: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
   chronometer.startClick(printTime);
 }
