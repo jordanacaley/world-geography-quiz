@@ -114,7 +114,7 @@ export const hardQuestions = [
   question: "What is the name of one of the Neo-Aramaic languages spoken by the Jewish population from Northwestern Iraq?",
   correct_answer: "Lishana Deni",
   incorrect_answers: [
-  "Hulaul&aacute;",
+  "Hulaulá;",
   "Lishan Didan",
   "Chaldean Neo-Aramaic"
   ]
@@ -135,7 +135,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "In 2012 the German-speaking microstate &quot;Liechtenstein&quot; in Central Europe had a population of how many inhabitants?",
+  question: 'In 2012 the German-speaking microstate "Liechtenstein" in Central Europe had a population of how many inhabitants?',
   correct_answer: "36,600",
   incorrect_answers: [
   "2,400",
@@ -147,7 +147,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "Where is the Luxor Hotel &amp; Casino located?",
+  question: "Where is the Luxor Hotel & Casino located?",
   correct_answer: "Paradise, Nevada",
   incorrect_answers: [
   "Las Vegas, Nevada",
@@ -195,7 +195,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "Where is the fast food chain &quot;Panda Express&quot; headquartered?",
+  question: 'Where is the fast food chain "Panda Express" headquartered?',
   correct_answer: "Rosemead, California",
   incorrect_answers: [
   "Sacramento, California",
@@ -207,7 +207,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "Llanfair&shy;pwllgwyngyll&shy;gogery&shy;chwyrn&shy;drobwll&shy;llan&shy;tysilio&shy;gogo&shy;goch is located on which Welsh island?",
+  question: "Llanfair­pwll­gwyn­gyll­go­gery­chwyrn­drobwll­llan­tysilio­gogo­goch is located on which Welsh island?",
   correct_answer: "Anglesey",
   incorrect_answers: [
   "Barry",
@@ -220,11 +220,11 @@ export const hardQuestions = [
   type: "multiple",
   difficulty: "hard",
   question: "What is the area of Vatican City?",
-  correct_answer: "0.44km^2",
+  correct_answer: "0.44km2",
   incorrect_answers: [
-  "0.10km^2",
-  "0.86km^2",
-  "12.00km^2"
+  "0.10km2",
+  "0.86km2",
+  "12.00km2"
   ]
   },
   {
@@ -303,11 +303,11 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "What is the Finnish word for &quot;Finland&quot;?",
+  question: 'What is the Finnish word for "Finland"?',
   correct_answer: "Suomi",
   incorrect_answers: [
   "Eesti",
-  "Magyarorsz&aacute;g",
+  "Magyarország",
   "Sverige"
   ]
   },
@@ -327,7 +327,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "What North American tourist attraction is served by the &quot;Maid of the Mist&quot; tour company?",
+  question: 'What North American tourist attraction is served by the "Maid of the Mist" tour company?',
   correct_answer: "Niagara Falls",
   incorrect_answers: [
   "Whistler, British Columbia",
@@ -423,7 +423,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "Which of these cities has a 4&deg; East longitude. ",
+  question: "Which of these cities has a 4 degrees East longitude. ",
   correct_answer: "Amsterdam",
   incorrect_answers: [
   "Rio de Janero",

@@ -63,7 +63,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "How many counties in the Republic of Ireland.",
+  question: "How many counties in the Republic of Ireland?",
   correct_answer: "26",
   incorrect_answers: [
   "32",
@@ -78,7 +78,7 @@ export const mediumQuestions = [
   question: "Which city is the capital of Switzerland?",
   correct_answer: "Bern",
   incorrect_answers: [
-  "Z&uuml;rich",
+  "Zürich",
   "Frankfurt",
   "Wien"
   ]
@@ -279,7 +279,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "Where is the world&#039;s oldest still operational space launch facility located?",
+  question: "Where is the world's oldest still operational space launch facility located?",
   correct_answer: "Kazakhstan",
   incorrect_answers: [
   "Russia",
@@ -303,7 +303,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "Which country has the abbreviation &quot;CH&quot;?",
+  question: 'Which country has the abbreviation "CH"?',
   correct_answer: "Switzerland",
   incorrect_answers: [
   "China",
@@ -436,7 +436,7 @@ export const mediumQuestions = [
   type: "multiple",
   difficulty: "medium",
   question: "What was the most populous city in the Americas in 2015?",
-  correct_answer: "S&atilde;o Paulo",
+  correct_answer: "São Paulo",
   incorrect_answers: [
   "New York",
   "Mexico City",
@@ -459,7 +459,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "Which of these country&#039;s capitals starts with the letter B?",
+  question: "Which of these country's capitals starts with the letter B?",
   correct_answer: "Lebanon",
   incorrect_answers: [
   "Jordan",
@@ -483,7 +483,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "Which is the world&#039;s longest river?",
+  question: "Which is the world's longest river?",
   correct_answer: "Nile",
   incorrect_answers: [
   "Missouri",
@@ -519,7 +519,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "Frankenmuth, a US city nicknamed &quot;Little Bavaria&quot;, is located in what state?",
+  question: 'Frankenmuth, a US city nicknamed "Little Bavaria", is located in what state?',
   correct_answer: "Michigan",
   incorrect_answers: [
   "Pennsylvania",
@@ -543,7 +543,7 @@ export const mediumQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "medium",
-  question: "Where is Hadrian&#039;s Wall located?",
+  question: "Where is Hadrian's Wall located?",
   correct_answer: "Carlisle, England",
   incorrect_answers: [
   "Rome, Italy",

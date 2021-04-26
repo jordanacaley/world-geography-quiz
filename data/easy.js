@@ -111,7 +111,7 @@ export const easyQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "easy",
-  question: "Which of the following European languages is classified as a &quot;language isolate?&quot;",
+  question: 'Which of the following European languages is classified as a "language isolate?"',
   correct_answer: "Basque",
   incorrect_answers: [
   "Galician",
@@ -148,11 +148,11 @@ export const easyQuestions = [
   type: "multiple",
   difficulty: "easy",
   question: "What is the 15th letter of the Greek alphabet?",
-  correct_answer: "Omicron (&Omicron;)",
+  correct_answer: "Omicron (Οο)",
   incorrect_answers: [
-  "Sigma (&Sigma;)",
-  "Pi (&Pi;)",
-  "Nu (&Nu;)"
+  "Sigma (Σσς)",
+  "Pi (Ππ)",
+  "Nu (Νν)"
   ]
   },
   {
@@ -186,8 +186,8 @@ export const easyQuestions = [
   question: "What name was historically used for the Turkish city currently known as Istanbul?",
   correct_answer: "Constantinople",
   incorrect_answers: [
-  "H&uuml;davendigar",
-  "S&ouml;ğ&uuml;t",
+  "Hüdavendigar",
+  "Söğüt",
   "Adrianople"
   ]
   },
@@ -303,7 +303,7 @@ export const easyQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "easy",
-  question: "Which of these African countries list &quot;Spanish&quot; as an official language?",
+  question: 'Which of these African countries list "Spanish" as an official language?',
   correct_answer: "Equatorial Guinea",
   incorrect_answers: [
   "Guinea",
@@ -375,7 +375,7 @@ export const easyQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "easy",
-  question: "What is Canada&#039;s smallest province?",
+  question: "What is Canada's smallest province?",
   correct_answer: "Prince Edward Island",
   incorrect_answers: [
   "New Brunswick",
@@ -399,7 +399,7 @@ export const easyQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "easy",
-  question: "How many stars are featured on New Zealand&#039;s flag?",
+  question: "How many stars are featured on New Zealand's flag?",
   correct_answer: "4",
   incorrect_answers: [
   "5",
@@ -435,7 +435,7 @@ export const easyQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "easy",
-  question: "What is the name of New Zealand&#039;s indigenous people?",
+  question: "What is the name of New Zealand's indigenous people?",
   correct_answer: "Maori",
   incorrect_answers: [
   "Vikings",
@@ -567,7 +567,7 @@ export const easyQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "easy",
-  question: "Where would you find the &quot;Spanish Steps&quot;?",
+  question: 'Where would you find the "Spanish Steps"?',
   correct_answer: "Rome, Italy",
   incorrect_answers: [
   "Barcelona, Spain",
