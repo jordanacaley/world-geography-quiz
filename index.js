@@ -74,16 +74,10 @@ function printSeconds() {
   secDec.textContent = chronometer.twoDigitsNumber(chronometer.getSeconds()); 
 }
 
-function printSplit() {
-  splits.innerHTML += `<li>${chronometer.splitClick()}</li>`
+function printSplit(difficulty) {
+  splits.innerHTML += `<li>${difficulty[0].difficulty.toUpperCase()}: ${chronometer.splitClick()}</li>`
 }
 
-function clearSplits() {
-  splits.innerHTML = '';
-  chronometer.stopClick();
-  chronometer.resetClick();
-  printTime();
-}
 //Testing out the chrono stuff END//
 
 const easyQuestions = JSON.parse(JSON.stringify(source));
@@ -222,7 +216,7 @@ function checkAnswer(evt) {
       console.log("You beat the game!");
       playAgainBtn.classList.toggle("hidden");
       chronometer.stopClick()
-      printSplit();
+      printSplit(difficulty);
     } else {
       nextQuestion(difficulty);
     }
@@ -241,3 +235,9 @@ function checkAnswer(evt) {
 }
 
 playAgainBtn.onclick = newGame;
+
+
+
+// //play audio with out html audio tag
+// const myAudio = new Audio('audio/mbb-beach.mp3');
+// myAudio.play();
