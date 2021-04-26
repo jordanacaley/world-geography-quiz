@@ -16,6 +16,8 @@ for (let i = 0; i < 50; i++) {
 let correctAnswer = '';
 let incorrectAnswers = [];
 let difficulty = '';
+let setLevelDiv = document.getElementById('set-level');
+let displayLevel = document.getElementById('display-level');
 
 const difficultyBtns = document.querySelectorAll('.level');
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
@@ -33,10 +35,12 @@ function setLevel(evt) {
     nextQuestion(hardQuestions);
     difficulty = hardQuestions;
   }
+  setLevelDiv.classList.toggle("hidden");
+  displayLevel.classList.toggle("hidden");
+  displayLevel.textContent = `Difficulty: ${level.toUpperCase()}`;
 }
 
-function nextQuestion(setLevel) {
-    
+function nextQuestion(setLevel) {    
   // Randomly select a number from the questionNumberArray, which will be the question asked
   let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
   console.log(randomQuestion);
@@ -58,7 +62,6 @@ function nextQuestion(setLevel) {
   displayQuestion(newQuestion);
   displayOptions(correctAnswer, incorrectAnswers)
 }
-
 
 function displayQuestion(newQuestion) {
   document.querySelector(".question").textContent = newQuestion;
@@ -99,6 +102,7 @@ const scoreboardCorrect = document.getElementById('correct');
 const scoreboardIncorrect = document.getElementById('incorrect');
 let counterCorrect = 0;
 let counterIncorrect = 0;
+const playAgainBtn = document.getElementById('play-again');
 
 function checkAnswer(evt) {
   const choice = evt.target.textContent;
@@ -109,6 +113,7 @@ function checkAnswer(evt) {
     scoreboardCorrect.textContent = `Correct: ${counterCorrect}`;
     if (counterCorrect === 10) {
       console.log("You beat the game!");
+      playAgainBtn.classList.toggle("hidden");
     } else {
       nextQuestion(difficulty);
     }
@@ -118,8 +123,15 @@ function checkAnswer(evt) {
     scoreboardIncorrect.textContent = `Incorrect: ${counterIncorrect}`;
     if (counterIncorrect === 3) {
       console.log("Game over for you!");
+      playAgainBtn.classList.toggle("hidden");
     } else {
       nextQuestion(difficulty);
     }
   }
 }
+
+function refreshPage(){
+  window.location.reload();
+} 
+
+playAgainBtn.onclick = refreshPage;
