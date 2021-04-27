@@ -161,42 +161,45 @@ function displayOptions(correctAnswer, incorrectAnswers) {
 
 optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
 
+function checkAnswer(evt) {
+  myAudio.pause();
+  evt.target.blur();
+  const choice = evt.target.textContent;  
+  if (choice === correctAnswer) {
+    counterCorrect += 1;
+    playAudio("audio/lightapplause.mp3");
+    scoreboardCorrect.textContent = `${counterCorrect}`;    
+  } else {
+    counterIncorrect += 1;
+    playAudio("audio/fail-buzzer-03.mp3");
+    scoreboardIncorrect.textContent = `${counterIncorrect}`;     
+  }
+  checkScores();
+  checkEndOfRound();
+}
+
 // Play sound when user answers question
 function playAudio(url) {
   new Audio(url).play();
 }
 
-function checkAnswer(evt) {
-  myAudio.pause();
-  evt.target.blur();
-  const choice = evt.target.textContent;
-  if (choice === correctAnswer) {
-    counterCorrect += 1;
-    playAudio("audio/lightapplause.mp3");
-    scoreboardCorrect.textContent = `${counterCorrect}`;
-    if (counterCorrect === 3) {
-      toggleHidden(roundOverDisplay);
-      toggleHidden(qaDisplay);
-      finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
-      chronometer.stopClick()
-      printSplit(difficulty);
-      myAudio.play();
-    } else {
-      nextQuestion(difficulty);
-    }
+function checkScores() {
+  if (counterCorrect === 3) {
+    finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
+    printSplit(difficulty);
+  } else if (counterIncorrect === 3) {
+    finalResultMessage.innerHTML = `<span>Ouch! 3 wrong <i class="fas fa-user-injured"></i></span>`      
   } else {
-    counterIncorrect += 1;
-    playAudio("audio/fail-buzzer-03.mp3");
-    scoreboardIncorrect.textContent = `${counterIncorrect}`;
-    if (counterIncorrect === 3) {
-      toggleHidden(roundOverDisplay);
-      toggleHidden(qaDisplay);
-      finalResultMessage.innerHTML = `<span>Ouch! 3 wrong <i class="fas fa-user-injured"></i></span>`
-      chronometer.stopClick()
-      myAudio.play();
-    } else {
-      nextQuestion(difficulty);
-    }
+    nextQuestion(difficulty);
+  }
+}
+
+function checkEndOfRound() {
+  if (counterCorrect === 3 || counterIncorrect === 3) {
+    toggleHidden(roundOverDisplay);
+    toggleHidden(qaDisplay);
+    chronometer.stopClick()
+    myAudio.play();
   }
 }
 
@@ -215,7 +218,6 @@ function newGame() {
   counterIncorrect = 0;
   scoreboardIncorrect.textContent = `${counterIncorrect}`;
   setLevel;
-  checkAnswer;
 }
 
 reloadBtn.onclick = refreshPage;
@@ -225,6 +227,5 @@ function refreshPage(){
 } 
 
 // TO DO: 
-// Refactor checkAnswer DRY
 // Fireworks or pop-up when you win/lose? Use z-index to move things back/forward, size from 0 to 100vh&vw, transition
 // Keep navbar? About page?
