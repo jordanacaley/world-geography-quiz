@@ -74,6 +74,7 @@ function newGame() {
 
 function setLevel(evt) {
   const level = evt.target.id;
+  playAudio("audio/mbb-beach.mp3");
   console.log(level);
   if (level === 'easy') {
     nextQuestion(easyQuestions);
@@ -165,12 +166,19 @@ let counterCorrect = 0;
 let counterIncorrect = 0;
 const playAgainBtn = document.getElementById('play-again');
 
+// Play sound when user gets question right
+function playAudio(url) {
+  new Audio(url).play();
+}
+
+// TO DO: Write game over function so that user can't keep playing once the game ends. Pop up?
+
 function checkAnswer(evt) {
   const choice = evt.target.textContent;
   console.log(choice === correctAnswer); // compare user's choice to correct answer
   if (choice === correctAnswer) {
-    console.log("Eres un(a) crack de la geografía!")
     counterCorrect += 1;
+    playAudio("audio/lightapplause.mp3");
     scoreboardCorrect.textContent = `${counterCorrect}`;
     if (counterCorrect === 10) {
       console.log("You beat the game!");
@@ -181,8 +189,8 @@ function checkAnswer(evt) {
       nextQuestion(difficulty);
     }
   } else {
-    console.log("Womp womp... wrong.");
     counterIncorrect += 1;
+    playAudio("audio/fail-buzzer-03.mp3");
     scoreboardIncorrect.textContent = `${counterIncorrect}`;
     if (counterIncorrect === 3) {
       console.log("Game over for you!");
