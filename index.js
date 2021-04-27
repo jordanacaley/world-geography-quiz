@@ -64,7 +64,9 @@ function newGame() {
   setLevelDiv.classList.toggle("hidden");
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
-  playAgainBtn.classList.toggle("hidden");
+  if (!roundOverDisplay.classList.contains("hidden")) {
+    roundOverDisplay.classList.toggle("hidden");
+  }
   if (!qaDisplay.classList.contains("hidden")) {
     qaDisplay.classList.toggle("hidden");
   }
@@ -170,6 +172,8 @@ const scoreboardIncorrect = document.getElementById('incorrect');
 let counterCorrect = 0;
 let counterIncorrect = 0;
 const playAgainBtn = document.getElementById('play-again');
+const roundOverDisplay = document.getElementById('round-over-display');
+const finalResultMessage = document.getElementById('final-result-message');
 
 // Play sound when user answers question
 function playAudio(url) {
@@ -184,9 +188,9 @@ function checkAnswer(evt) {
     counterCorrect += 1;
     playAudio("audio/lightapplause.mp3");
     scoreboardCorrect.textContent = `${counterCorrect}`;
-    if (counterCorrect === 3) {
-      console.log("You beat the game!");
-      playAgainBtn.classList.toggle("hidden");
+    if (counterCorrect === 10) {
+      roundOverDisplay.classList.toggle("hidden");
+      finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
       qaDisplay.classList.toggle("hidden");
       chronometer.stopClick()
       printSplit(difficulty);
@@ -199,8 +203,9 @@ function checkAnswer(evt) {
     playAudio("audio/fail-buzzer-03.mp3");
     scoreboardIncorrect.textContent = `${counterIncorrect}`;
     if (counterIncorrect === 3) {
-      console.log("Game over for you!");
-      playAgainBtn.classList.toggle("hidden");
+      roundOverDisplay.classList.toggle("hidden");
+      finalResultMessage.innerHTML = `<span>Ouch! 3 wrong <i class="fas fa-user-injured"></i></span>`
+      qaDisplay.classList.toggle("hidden");
       chronometer.stopClick()
       myAudio.play();
     } else {
@@ -221,6 +226,5 @@ reloadBtn.onclick = refreshPage;
 
 
 // TO DO: 
-// Write game over function so that user can't keep playing once the game ends. Celebration pop up? Remove QA display and replace it with Play Again button
 // Last button selected stays dark when you move to the next question
 // Keep navbar? About page?
