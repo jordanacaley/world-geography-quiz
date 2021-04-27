@@ -181,6 +181,7 @@ function playAudio(url) {
 }
 
 function checkAnswer(evt) {
+  evt.target.blur();
   myAudio.pause();
   const choice = evt.target.textContent;
   console.log(choice === correctAnswer); // compare user's choice to correct answer
@@ -227,5 +228,6 @@ reloadBtn.onclick = refreshPage;
 
 // TO DO: 
 // Last button selected stays dark when you move to the next question
+// Refactor code (function for hidden)
+// Fireworks or pop-up when you win/lose? Use z-index to move things back/forward, size from 0 to 100vh&vw, transition
 // Keep navbar? About page?
-// Refactor code
