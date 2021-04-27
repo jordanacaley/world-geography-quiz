@@ -43,7 +43,7 @@ export const mediumQuestions = [
   correct_answer: "The United Kingdom",
   incorrect_answers: [
   "Japan",
-  "Austrailia",
+  "Australia",
   "Argentina"
   ]
   },
