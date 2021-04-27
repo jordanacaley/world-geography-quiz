@@ -65,7 +65,9 @@ function newGame() {
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
   playAgainBtn.classList.toggle("hidden");
-  qaDisplay.classList.toggle("hidden");
+  if (!qaDisplay.classList.contains("hidden")) {
+    qaDisplay.classList.toggle("hidden");
+  }
   counterCorrect = 0;
   scoreboardCorrect.textContent = `${counterCorrect}`;
   counterIncorrect = 0;
@@ -185,6 +187,7 @@ function checkAnswer(evt) {
     if (counterCorrect === 3) {
       console.log("You beat the game!");
       playAgainBtn.classList.toggle("hidden");
+      qaDisplay.classList.toggle("hidden");
       chronometer.stopClick()
       printSplit(difficulty);
       myAudio.play();
