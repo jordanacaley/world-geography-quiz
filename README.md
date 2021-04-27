@@ -2,7 +2,7 @@
 
 ## Introduction ##
 
-I built this World Geography Quiz during Week 3 of my Ironhack bootcamp to practice HTML, CSS, and Vanilla JavaScript for DOM manipulation.
+I built this World Geography Quiz during Week 3 of my Ironhack bootcamp to practice HTML, CSS, and Vanilla JavaScript for DOM manipulation. Trivia questions were generated using <https://opentdb.com/>
 
 ## Set Up ##
 
