@@ -43,9 +43,6 @@ for (let i = 0; i < 50; i++) {
 }
 
 // Initialize variables
-let correctAnswer = '';
-let incorrectAnswers = [];
-let difficulty = '';
 const setLevelDiv = document.getElementById('set-level');
 const displayLevel = document.getElementById('display-level');
 const scoreboard = document.getElementById('scoreboard');
@@ -55,6 +52,17 @@ const earthAnimation = document.getElementById("earth");
 const timingDiv = document.getElementById("timing-div");
 const myAudio = document.getElementById("beach-audio");
 const reloadBtn = document.getElementById("reload")
+const optionsCards = document.querySelectorAll('.option');  
+const scoreboardCorrect = document.getElementById('correct');
+const scoreboardIncorrect = document.getElementById('incorrect');
+const playAgainBtn = document.getElementById('play-again');
+const roundOverDisplay = document.getElementById('round-over-display');
+const finalResultMessage = document.getElementById('final-result-message');
+let correctAnswer = '';
+let incorrectAnswers = [];
+let difficulty = '';
+let counterCorrect = 0;
+let counterIncorrect = 0;
 
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
@@ -128,30 +136,18 @@ function shuffleArray(arr) {
   return arr;
 }
 
-const optionsCards = document.querySelectorAll('.option');  
-
 function displayOptions(correctAnswer, incorrectAnswers) {
   let optionsArray = [];
   optionsArray.push(correctAnswer);
   optionsArray.push(incorrectAnswers);
   optionsArray = shuffleArray(optionsArray.flat()); // puts all 4 options into array and shuffles order
 
-  const optionsCards = document.querySelectorAll('.option');  
   for (let i = 0; i < optionsCards.length; i++) {
     optionsCards[i].textContent = `${optionsArray[i]}`
   }
 }
 
 optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
-
-
-const scoreboardCorrect = document.getElementById('correct');
-const scoreboardIncorrect = document.getElementById('incorrect');
-let counterCorrect = 0;
-let counterIncorrect = 0;
-const playAgainBtn = document.getElementById('play-again');
-const roundOverDisplay = document.getElementById('round-over-display');
-const finalResultMessage = document.getElementById('final-result-message');
 
 // Play sound when user answers question
 function playAudio(url) {
