@@ -11,6 +11,11 @@
   padding-left: 10px;
 }
 
+.jumbotron {
+  background: rgb(174,213,238);
+  background: linear-gradient(90deg, rgba(174,213,238,1) 0%, rgba(230,233,148,1) 100%);
+}
+
 
 #earth {
   /* [1] Allow it to contain the absolutely positions pseudo-elements (later-on) */

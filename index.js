@@ -188,7 +188,7 @@ function checkAnswer(evt) {
     counterCorrect += 1;
     playAudio("audio/lightapplause.mp3");
     scoreboardCorrect.textContent = `${counterCorrect}`;
-    if (counterCorrect === 10) {
+    if (counterCorrect === 3) {
       roundOverDisplay.classList.toggle("hidden");
       finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
       qaDisplay.classList.toggle("hidden");
@@ -228,3 +228,4 @@ reloadBtn.onclick = refreshPage;
 // TO DO: 
 // Last button selected stays dark when you move to the next question
 // Keep navbar? About page?
+// Refactor code
