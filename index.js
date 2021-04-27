@@ -228,4 +228,4 @@ function refreshPage(){
 
 // TO DO: 
 // Fireworks or pop-up when you win/lose? Use z-index to move things back/forward, size from 0 to 100vh&vw, transition
-// Keep navbar? About page?
+// About page?
