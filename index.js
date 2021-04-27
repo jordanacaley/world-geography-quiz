@@ -182,7 +182,7 @@ function checkAnswer(evt) {
     counterCorrect += 1;
     playAudio("audio/lightapplause.mp3");
     scoreboardCorrect.textContent = `${counterCorrect}`;
-    if (counterCorrect === 10) {
+    if (counterCorrect === 3) {
       console.log("You beat the game!");
       playAgainBtn.classList.toggle("hidden");
       chronometer.stopClick()
@@ -219,4 +219,5 @@ reloadBtn.onclick = refreshPage;
 
 // TO DO: 
 // Write game over function so that user can't keep playing once the game ends. Pop up?
+// Last button selected stays dark when you move to the next question
 // Keep navbar? About page?

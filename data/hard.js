@@ -363,7 +363,7 @@ export const hardQuestions = [
   category: "Geography",
   type: "multiple",
   difficulty: "hard",
-  question: "What is Canada&#039;s largest island?",
+  question: "What is Canada's largest island?",
   correct_answer: "Baffin Island",
   incorrect_answers: [
   "Prince Edward Island",
