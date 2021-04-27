@@ -58,39 +58,18 @@ const reloadBtn = document.getElementById("reload")
 
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
-function newGame() {
-  chronometer.resetClick();
-  printTime();
-  setLevelDiv.classList.toggle("hidden");
-  displayLevel.classList.toggle("hidden");
-  scoreboard.classList.toggle("hidden");
-  if (!roundOverDisplay.classList.contains("hidden")) {
-    roundOverDisplay.classList.toggle("hidden");
-  }
-  if (!qaDisplay.classList.contains("hidden")) {
-    qaDisplay.classList.toggle("hidden");
-  }
-  counterCorrect = 0;
-  scoreboardCorrect.textContent = `${counterCorrect}`;
-  counterIncorrect = 0;
-  scoreboardIncorrect.textContent = `${counterIncorrect}`;
-  setLevel;
-  checkAnswer;
-}
-
 function setLevel(evt) {
   const level = evt.target.id;
   myAudio.play();
-  console.log(level);
   if (level === 'easy') {
-    nextQuestion(easyQuestions);
     difficulty = easyQuestions;
+    nextQuestion(easyQuestions);
   } else if (level === 'medium') {
-    nextQuestion(mediumQuestions);
     difficulty = mediumQuestions;
+    nextQuestion(mediumQuestions);
   } else {
-    nextQuestion(hardQuestions);
     difficulty = hardQuestions;
+    nextQuestion(hardQuestions);
   }
   reloadBtn.classList.remove("hidden");
   setLevelDiv.classList.toggle("hidden");
@@ -109,7 +88,6 @@ function setLevel(evt) {
 function nextQuestion(setLevel) {    
   // Randomly select a number from the questionNumberArray, which will be the question asked
   let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
-  console.log(randomQuestion);
 
   // Remove that question from the array so it can't be asked again
   for (let i = 0; i < questionNumberArray.length; i++) {
@@ -117,7 +95,6 @@ function nextQuestion(setLevel) {
       questionNumberArray.splice(i, 1);
     }
   }
-  console.log(questionNumberArray);
 
   let results = setLevel[randomQuestion];
   const newQuestion = results.question; 
@@ -167,6 +144,7 @@ function displayOptions(correctAnswer, incorrectAnswers) {
 
 optionsCards.forEach((btn) => (btn.onclick = checkAnswer));
 
+
 const scoreboardCorrect = document.getElementById('correct');
 const scoreboardIncorrect = document.getElementById('incorrect');
 let counterCorrect = 0;
@@ -184,7 +162,6 @@ function checkAnswer(evt) {
   evt.target.blur();
   myAudio.pause();
   const choice = evt.target.textContent;
-  console.log(choice === correctAnswer); // compare user's choice to correct answer
   if (choice === correctAnswer) {
     counterCorrect += 1;
     playAudio("audio/lightapplause.mp3");
@@ -217,17 +194,33 @@ function checkAnswer(evt) {
 
 playAgainBtn.onclick = newGame;
 
+function newGame() {
+  chronometer.resetClick();
+  printTime();
+  setLevelDiv.classList.toggle("hidden");
+  displayLevel.classList.toggle("hidden");
+  scoreboard.classList.toggle("hidden");
+  if (!roundOverDisplay.classList.contains("hidden")) {
+    roundOverDisplay.classList.toggle("hidden");
+  }
+  if (!qaDisplay.classList.contains("hidden")) {
+    qaDisplay.classList.toggle("hidden");
+  }
+  counterCorrect = 0;
+  scoreboardCorrect.textContent = `${counterCorrect}`;
+  counterIncorrect = 0;
+  scoreboardIncorrect.textContent = `${counterIncorrect}`;
+  setLevel;
+  checkAnswer;
+}
 
+reloadBtn.onclick = refreshPage;
 
 function refreshPage(){
   window.location.reload();
 } 
 
-reloadBtn.onclick = refreshPage;
-
-
 // TO DO: 
-// Last button selected stays dark when you move to the next question
 // Refactor code (function for hidden)
 // Fireworks or pop-up when you win/lose? Use z-index to move things back/forward, size from 0 to 100vh&vw, transition
 // Keep navbar? About page?
