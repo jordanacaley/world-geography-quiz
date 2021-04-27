@@ -53,6 +53,7 @@ const qaDisplay = document.getElementById("qa-display");
 const difficultyBtns = document.querySelectorAll('.level');
 const earthAnimation = document.getElementById("earth");
 const timingDiv = document.getElementById("timing-div");
+const myAudio = document.getElementById("beach-audio");
 
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
@@ -74,7 +75,7 @@ function newGame() {
 
 function setLevel(evt) {
   const level = evt.target.id;
-  playAudio("audio/mbb-beach.mp3");
+  myAudio.play();
   console.log(level);
   if (level === 'easy') {
     nextQuestion(easyQuestions);
@@ -166,7 +167,7 @@ let counterCorrect = 0;
 let counterIncorrect = 0;
 const playAgainBtn = document.getElementById('play-again');
 
-// Play sound when user gets question right
+// Play sound when user answers question
 function playAudio(url) {
   new Audio(url).play();
 }
@@ -174,6 +175,7 @@ function playAudio(url) {
 // TO DO: Write game over function so that user can't keep playing once the game ends. Pop up?
 
 function checkAnswer(evt) {
+  myAudio.pause();
   const choice = evt.target.textContent;
   console.log(choice === correctAnswer); // compare user's choice to correct answer
   if (choice === correctAnswer) {
@@ -185,6 +187,7 @@ function checkAnswer(evt) {
       playAgainBtn.classList.toggle("hidden");
       chronometer.stopClick()
       printSplit(difficulty);
+      myAudio.play();
     } else {
       nextQuestion(difficulty);
     }
@@ -196,6 +199,7 @@ function checkAnswer(evt) {
       console.log("Game over for you!");
       playAgainBtn.classList.toggle("hidden");
       chronometer.stopClick()
+      myAudio.play();
     } else {
       nextQuestion(difficulty);
     }
@@ -213,6 +217,3 @@ function refreshPage(){
 reloadBtn.onclick = refreshPage;
 
 
-// //play audio with out html audio tag
-// const myAudio = new Audio('audio/mbb-beach.mp3');
-// myAudio.play();
