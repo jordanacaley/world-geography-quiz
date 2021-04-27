@@ -37,29 +37,29 @@
         <p class="lead">Get 10 questions right to win. Game over if you get 3 wrong!</p>
       </div>
       <div id="earth"></div>    
-      <div id="timing-div" class="hidden">
+      <div id="timing-div" class="hidden border border-primary rounded border-3 p-2">
         <div id="clock">
-          <h3>Current time:</h3>
+          <h5>Current time:</h5>
           <div id="sphere">
             <span id="minDec" class="number">0</span><span id="minUni" class="number">0</span><span>:</span
               ><span id="secDec" class="number">0</span><span id="secUni" class="number">0</span>
           </div>
         </div>
         <div id="splits-container">
-          <h3>Your records:</h3>
+          <h5>Your records:</h5>
           <ul id="splits"></ul>
         </div>
       </div>  
     </div>       
     <hr class="my-4">
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-around align-items-center">
       <div id="set-level">
         <p class="lead">Pick your difficulty level:</p>
         <button id="easy" type="button" class="btn btn-success btn-lg mb-1 level">Average American</button>
         <button id="medium" type="button" class="btn btn-warning btn-lg mb-1 level">Not too bad</button>
         <button id="hard" type="button" class="btn btn-danger btn-lg mb-1 level">Crack de la geografía</button>
       </div>
-      <div id="qa-display" class="mr-3 mb-0 hidden">
+      <div id="qa-display" class="mb-0 hidden">
         <div class="card text-white bg-primary mb-3" style="max-width: 50rem;">
           <div class="card-body">
             <h4 class="question card-title"></h4>
@@ -96,7 +96,7 @@
     
   </div>
   
-  <button id="play-again" class="hidden">Play again</button>
+  <button id="play-again" type="button" class="hidden btn btn-success btn-lg">Play again</button>
   </div>
 
   <audio id="beach-audio" src="audio/mbb-beach.mp3"></audio>

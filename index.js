@@ -218,6 +218,6 @@ reloadBtn.onclick = refreshPage;
 
 
 // TO DO: 
-// Write game over function so that user can't keep playing once the game ends. Pop up?
+// Write game over function so that user can't keep playing once the game ends. Celebration pop up? Remove QA display and replace it with Play Again button
 // Last button selected stays dark when you move to the next question
 // Keep navbar? About page?

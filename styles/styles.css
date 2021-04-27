@@ -6,6 +6,11 @@
   display: none;
 }
 
+#splits {
+  list-style-type: "\1F44D  ";
+  padding-left: 10px;
+}
+
 
 #earth {
   /* [1] Allow it to contain the absolutely positions pseudo-elements (later-on) */

@@ -294,7 +294,7 @@ export const easyQuestions = [
   question: "What is the Capital of the United States?",
   correct_answer: "Washington, D.C.",
   incorrect_answers: [
-  "Los Angelas, CA",
+  "Los Angeles, CA",
   "New York City, NY",
   "Houston, TX"
   ]
