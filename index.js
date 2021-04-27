@@ -54,6 +54,7 @@ const difficultyBtns = document.querySelectorAll('.level');
 const earthAnimation = document.getElementById("earth");
 const timingDiv = document.getElementById("timing-div");
 const myAudio = document.getElementById("beach-audio");
+const reloadBtn = document.getElementById("reload")
 
 difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
@@ -87,6 +88,7 @@ function setLevel(evt) {
     nextQuestion(hardQuestions);
     difficulty = hardQuestions;
   }
+  reloadBtn.classList.remove("hidden");
   setLevelDiv.classList.toggle("hidden");
   displayLevel.classList.toggle("hidden");
   scoreboard.classList.toggle("hidden");
@@ -172,8 +174,6 @@ function playAudio(url) {
   new Audio(url).play();
 }
 
-// TO DO: Write game over function so that user can't keep playing once the game ends. Pop up?
-
 function checkAnswer(evt) {
   myAudio.pause();
   const choice = evt.target.textContent;
@@ -208,7 +208,7 @@ function checkAnswer(evt) {
 
 playAgainBtn.onclick = newGame;
 
-const reloadBtn = document.getElementById("reload")
+
 
 function refreshPage(){
   window.location.reload();
@@ -217,3 +217,6 @@ function refreshPage(){
 reloadBtn.onclick = refreshPage;
 
 
+// TO DO: 
+// Write game over function so that user can't keep playing once the game ends. Pop up?
+// Keep navbar? About page?
