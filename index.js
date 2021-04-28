@@ -63,11 +63,13 @@ const scoreboardIncorrect = document.getElementById('incorrect');
 const playAgainBtn = document.getElementById('play-again');
 const roundOverDisplay = document.getElementById('round-over-display');
 const finalResultMessage = document.getElementById('final-result-message');
+const fireworksDiv = document.getElementById('fireworks-div');
 let difficulty = '';
 let correctAnswer = '';
 let incorrectAnswers = [];
 let counterCorrect = 0;
 let counterIncorrect = 0;
+let randomQuestion = '';
 
 function hideElement(elem) {
   if (!elem.classList.contains("hidden")) {
@@ -103,8 +105,6 @@ function setLevel(evt) {
   showElement(reloadBtn);
   handleQuestion(difficulty);
 }
-
-let randomQuestion = '';
 
 function handleQuestion(difficulty) {
   let difficultyArray = [];
@@ -191,8 +191,6 @@ function checkAnswer(evt) {
 function playAudio(url) {
   new Audio(url).play();
 }
-
-const fireworksDiv = document.getElementById('fireworks-div');
 
 function checkScores() {
   if (counterCorrect === 10) {
