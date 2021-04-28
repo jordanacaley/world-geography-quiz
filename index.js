@@ -213,7 +213,7 @@ function newGame() {
   toggleHidden(setLevelDiv);
   toggleHidden(displayLevel);
   toggleHidden(scoreboard);
-  toggleHidden(fireworksDiv);
+  showHidden(fireworksDiv);
   showHidden(roundOverDisplay);
   showHidden(qaDisplay);
   counterCorrect = 0;
