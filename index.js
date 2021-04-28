@@ -184,7 +184,7 @@ function playAudio(url) {
 }
 
 function checkScores() {
-  if (counterCorrect === 3) {
+  if (counterCorrect === 10) {
     finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
     printSplit(difficulty);
   } else if (counterIncorrect === 3) {
@@ -195,7 +195,7 @@ function checkScores() {
 }
 
 function checkEndOfRound() {
-  if (counterCorrect === 3 || counterIncorrect === 3) {
+  if (counterCorrect === 10 || counterIncorrect === 3) {
     toggleHidden(roundOverDisplay);
     toggleHidden(qaDisplay);
     chronometer.stopClick()
