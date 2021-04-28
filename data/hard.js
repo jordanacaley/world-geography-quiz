@@ -114,7 +114,7 @@ export const hardQuestions = [
   question: "What is the name of one of the Neo-Aramaic languages spoken by the Jewish population from Northwestern Iraq?",
   correct_answer: "Lishana Deni",
   incorrect_answers: [
-  "Hulaulá;",
+  "Hulaulá",
   "Lishan Didan",
   "Chaldean Neo-Aramaic"
   ]
