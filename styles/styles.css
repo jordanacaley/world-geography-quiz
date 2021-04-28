@@ -17,6 +17,16 @@
   /* height: 100vh; */
 }
 
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 800px) {
+  #title-div {
+    flex-direction: column;
+  }
+  #title-div p {
+    font-size: 16px;
+  }
+}
+
 #avatar {
   height: 50px;
 }
@@ -25,8 +35,8 @@
 
 #earth {
   position: relative; 
-  width: 300px;
-  height: 300px;
+  min-width: 300px;
+  min-height: 300px;
 
   /* Animation effects */
   transition: transform 200ms linear;
