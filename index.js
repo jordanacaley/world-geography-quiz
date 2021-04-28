@@ -36,10 +36,15 @@ function printSplit(difficulty) {
   splits.innerHTML += `<li>${difficulty[0].difficulty.charAt(0).toUpperCase() + difficulty[0].difficulty.slice(1)}: ${chronometer.splitClick()}</li>`
 }
 
-// Create an array with numbers 0 - 49 for each question
-let questionNumberArray = [];
+// Create an array for each level with numbers 0 - 49 for each question
+let easyNumberArray = [];
+let medNumberArray = [];
+let hardNumberArray = [];
+
 for (let i = 0; i < 50; i++) {
-  questionNumberArray.push(i);
+  easyNumberArray.push(i);
+  medNumberArray.push(i);
+  hardNumberArray.push(i);
 }
 
 // Initialize variables
@@ -104,25 +109,38 @@ function setLevel(evt) {
   removeHidden();
   showHidden(earthAnimation);
   hideElement(timingDiv);
+  handleQuestion(difficulty);
+}
+
+let randomQuestion = '';
+
+function handleQuestion(difficulty) {
+  let difficultyArray = [];
+  if (difficulty === easyQuestions) {
+    difficultyArray = easyNumberArray;
+  } else if (difficulty === mediumQuestions) {
+    difficultyArray = medNumberArray;
+  } else {
+    difficultyArray = hardNumberArray;
+  }
+  // Randomly select a number from the questionNumberArray, which will be the question asked
+  randomQuestion = difficultyArray[Math.floor(Math.random()*difficultyArray.length)];
+  
+  // Remove that question from the array so it can't be asked again
+  for (let i = 0; i < difficultyArray.length; i++) {
+    if (difficultyArray[i] === randomQuestion) {
+      difficultyArray.splice(i, 1);
+    }
+  }
   nextQuestion(difficulty);
 }
 
 function nextQuestion(level) {    
-  // Randomly select a number from the questionNumberArray, which will be the question asked
-  let randomQuestion = questionNumberArray[Math.floor(Math.random()*questionNumberArray.length)];
-
-  // Remove that question from the array so it can't be asked again
-  for (let i = 0; i < questionNumberArray.length; i++) {
-    if (questionNumberArray[i] === randomQuestion) {
-      questionNumberArray.splice(i, 1);
-    }
-  }
-
   const results = level[randomQuestion];
   const newQuestion = results.question; 
   correctAnswer = results.correct_answer;
   incorrectAnswers = results.incorrect_answers;
-  console.log(correctAnswer);
+  console.log(correctAnswer); // Delete this before Friday!
   hideElement(qaDisplay);
   displayQuestion(newQuestion);
   displayOptions(correctAnswer, incorrectAnswers)
@@ -192,7 +210,7 @@ function checkScores() {
   } else if (counterIncorrect === 3) {
     finalResultMessage.innerHTML = `<span>Ouch! 3 wrong <i class="fas fa-user-injured"></i></span>`      
   } else {
-    nextQuestion(difficulty);
+    handleQuestion(difficulty);
   }
 }
 
