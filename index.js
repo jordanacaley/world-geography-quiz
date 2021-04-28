@@ -123,7 +123,6 @@ function nextQuestion(level) {
   correctAnswer = results.correct_answer;
   incorrectAnswers = results.incorrect_answers;
   console.log(correctAnswer);
-  console.log(incorrectAnswers);
   hideElement(qaDisplay);
   displayQuestion(newQuestion);
   displayOptions(correctAnswer, incorrectAnswers)
@@ -183,9 +182,12 @@ function playAudio(url) {
   new Audio(url).play();
 }
 
+const fireworksDiv = document.getElementById('fireworks-div');
+
 function checkScores() {
   if (counterCorrect === 10) {
     finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
+    toggleHidden(fireworksDiv);
     printSplit(difficulty);
   } else if (counterIncorrect === 3) {
     finalResultMessage.innerHTML = `<span>Ouch! 3 wrong <i class="fas fa-user-injured"></i></span>`      
@@ -211,6 +213,7 @@ function newGame() {
   toggleHidden(setLevelDiv);
   toggleHidden(displayLevel);
   toggleHidden(scoreboard);
+  toggleHidden(fireworksDiv);
   showHidden(roundOverDisplay);
   showHidden(qaDisplay);
   counterCorrect = 0;
