@@ -22,12 +22,15 @@
   #title-div {
     flex-direction: column;
   }
+
   #title-div p {
     font-size: 16px;
   }
+  
   #game-div {
     flex-direction: column;
   }
+
 }
 
 #avatar {
