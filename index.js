@@ -7,7 +7,7 @@ const easyQuestions = JSON.parse(JSON.stringify(source));
 const mediumQuestions = JSON.parse(JSON.stringify(source2));
 const hardQuestions = JSON.parse(JSON.stringify(source3));
 
-// Chrono
+// Chrono functionality
 const chronometer = new Chronometer();
 
 // get the DOM elements that will serve us to display the time:
@@ -35,6 +35,7 @@ function printSeconds() {
 function printSplit(difficulty) {
   splits.innerHTML += `<li>${difficulty[0].difficulty.charAt(0).toUpperCase() + difficulty[0].difficulty.slice(1)}: ${chronometer.splitClick()}</li>`
 }
+// End Chrono functionality
 
 // Create an array for each level with numbers 0 - 49 for each question
 let easyNumberArray = [];
@@ -115,6 +116,7 @@ function handleQuestion(difficulty) {
   } else {
     difficultyArray = hardNumberArray;
   }
+
   // Randomly select a number from the questionNumberArray, which will be the question asked
   randomQuestion = difficultyArray[Math.floor(Math.random()*difficultyArray.length)];
   
@@ -127,12 +129,12 @@ function handleQuestion(difficulty) {
   nextQuestion(difficulty);
 }
 
-function nextQuestion(level) {    
-  const results = level[randomQuestion];
+function nextQuestion(difficulty) {    
+  const results = difficulty[randomQuestion];
   const newQuestion = results.question; 
   correctAnswer = results.correct_answer;
   incorrectAnswers = results.incorrect_answers;
-  console.log(correctAnswer); // Delete this before Friday!
+  // console.log(correctAnswer); // Uncomment if you want the answer to each question displayed in the console
   showElement(qaDisplay);
   displayQuestion(newQuestion);
   displayOptions(correctAnswer, incorrectAnswers)
