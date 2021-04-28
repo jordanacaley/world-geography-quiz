@@ -47,7 +47,7 @@ for (let i = 0; i < 50; i++) {
   hardNumberArray.push(i);
 }
 
-// Initialize variables
+// Initialize other variables
 const myAudio = document.getElementById("beach-audio");
 const setLevelDiv = document.getElementById('set-level');
 const displayLevel = document.getElementById('display-level');
@@ -69,27 +69,19 @@ let incorrectAnswers = [];
 let counterCorrect = 0;
 let counterIncorrect = 0;
 
-difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
-
-function toggleHidden(elem) {
-  elem.classList.toggle("hidden");
-}
-
-function removeHidden() {
-  reloadBtn.classList.remove("hidden");
-}
-
-function showHidden(elem) {
+function hideElement(elem) {
   if (!elem.classList.contains("hidden")) {
     elem.classList.toggle("hidden");
   }
 }
 
-function hideElement(elem) {
+function showElement(elem) {
   if (elem.classList.contains("hidden")) {
     elem.classList.toggle("hidden");
   }
 }
+
+difficultyBtns.forEach((btn) => (btn.onclick = setLevel));
 
 function setLevel(evt) {
   const level = evt.target.id;
@@ -103,12 +95,12 @@ function setLevel(evt) {
   }
   displayLevel.textContent = `Difficulty: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
   chronometer.startClick(printTime);
-  toggleHidden(setLevelDiv);
-  toggleHidden(displayLevel);
-  toggleHidden(scoreboard);
-  removeHidden();
-  showHidden(earthAnimation);
-  hideElement(timingDiv);
+  hideElement(earthAnimation);
+  hideElement(setLevelDiv);
+  showElement(displayLevel);
+  showElement(scoreboard);
+  showElement(timingDiv);
+  showElement(reloadBtn);
   handleQuestion(difficulty);
 }
 
@@ -141,7 +133,7 @@ function nextQuestion(level) {
   correctAnswer = results.correct_answer;
   incorrectAnswers = results.incorrect_answers;
   console.log(correctAnswer); // Delete this before Friday!
-  hideElement(qaDisplay);
+  showElement(qaDisplay);
   displayQuestion(newQuestion);
   displayOptions(correctAnswer, incorrectAnswers)
 }
@@ -205,7 +197,7 @@ const fireworksDiv = document.getElementById('fireworks-div');
 function checkScores() {
   if (counterCorrect === 10) {
     finalResultMessage.innerHTML = `<span>Woo hoo! 10 right <i class="fas fa-trophy"></i></span>`
-    toggleHidden(fireworksDiv);
+    showElement(fireworksDiv);
     printSplit(difficulty);
   } else if (counterIncorrect === 3) {
     finalResultMessage.innerHTML = `<span>Ouch! 3 wrong <i class="fas fa-user-injured"></i></span>`      
@@ -216,8 +208,8 @@ function checkScores() {
 
 function checkEndOfRound() {
   if (counterCorrect === 10 || counterIncorrect === 3) {
-    toggleHidden(roundOverDisplay);
-    toggleHidden(qaDisplay);
+    showElement(roundOverDisplay);
+    hideElement(qaDisplay);
     chronometer.stopClick()
     myAudio.play();
   }
@@ -228,12 +220,12 @@ playAgainBtn.onclick = newGame;
 function newGame() {
   chronometer.resetClick();
   printTime();
-  toggleHidden(setLevelDiv);
-  toggleHidden(displayLevel);
-  toggleHidden(scoreboard);
-  showHidden(fireworksDiv);
-  showHidden(roundOverDisplay);
-  showHidden(qaDisplay);
+  showElement(setLevelDiv);
+  hideElement(displayLevel);
+  hideElement(scoreboard);
+  hideElement(fireworksDiv);
+  hideElement(roundOverDisplay);
+  hideElement(qaDisplay);
   counterCorrect = 0;
   scoreboardCorrect.textContent = `${counterCorrect}`;
   counterIncorrect = 0;
