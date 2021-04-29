@@ -49,7 +49,7 @@
   color: #000;
   border-radius: 50%;
   background: url(../images/world-map-icon-3.jpg) 0 0 repeat; /* World map */
-  box-shadow: inset 20px 0 80px 6px rgba(0, 0, 0, 1);
+  box-shadow: inset 20px 0 80px 6px rgba(69, 130, 236, 0.1);
 
   /* Position things in a 3d space */
   transform-style: preserve-3d;
@@ -68,7 +68,7 @@
   content: '';
 
   border-radius: 50%;
-  box-shadow: -80px 15px 80px 10px rgba(0,0,0,.9) inset;
+  box-shadow: -80px 15px 80px 10px rgba(69, 130, 236, 0.5) inset;
 }
 
 #earth:before {
@@ -83,7 +83,7 @@
 
   opacity: .2;
   border-radius: 50%;
-  background: radial-gradient(circle at 100px 100px, #fff, #000);
+  background: radial-gradient(circle at 100px 100px, #fff, rgb(69, 130, 236));
 }
 
 @keyframes rotate {
