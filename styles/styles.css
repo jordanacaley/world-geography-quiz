@@ -16,6 +16,10 @@
   background: linear-gradient(90deg, rgba(174,213,238,1) 0%, rgba(230,233,148,1) 100%);
 }
 
+.lead.mb-2.pl-2 i {
+  font-size: 16px;
+}
+
 #avatar {
   height: 45px;
 }
